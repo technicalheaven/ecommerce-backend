@@ -2,6 +2,7 @@ import express, { Application, Request, Response, NextFunction } from 'express';
 import userRoutes from './modules/user/routes';
 import { responseHandler } from './middlewares/responseHandler';
 import { errorHandler } from './middlewares/errorHandler';
+import logger from './libs/logger/logger';
 const app:Application = express();
 const port:number = Number(process.env.PORT) || 3000;
 
@@ -14,6 +15,6 @@ app.use('/users', userRoutes);
 app.use(errorHandler);
 
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  logger.info(`Server is running on http://localhost:${port}`);
 });
     
